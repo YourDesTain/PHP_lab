@@ -94,14 +94,14 @@ $(document).ready(function () {
 //task2
 $(document).ready(function () {
   $("#factorial_form").submit(function (e) {
-    e.preventDefault(); 
-    var formData = $(this).serialize(); 
+    e.preventDefault();
+    var formData = $(this).serialize();
     $.ajax({
       type: "POST",
-      url: "task_php/calc_factorial.php", 
+      url: "task_php/calc_factorial.php",
       data: formData,
       success: function (response) {
-        $("#factorial_result").html(response); 
+        $("#factorial_result").html(response);
       },
     });
   });
@@ -109,11 +109,11 @@ $(document).ready(function () {
 //task3
 $(document).ready(function () {
   $("#quadratic_form").submit(function (e) {
-    e.preventDefault(); 
-    var formData = $(this).serialize(); 
+    e.preventDefault();
+    var formData = $(this).serialize();
     $.ajax({
       type: "POST",
-      url: "task_php/calc_quadratic.php", 
+      url: "task_php/calc_quadratic.php",
       data: formData,
       success: function (response) {
         $("#quadratic_roots_title").html(response);
@@ -124,11 +124,11 @@ $(document).ready(function () {
 //task5
 $(document).ready(function () {
   $("#expression_form").submit(function (e) {
-    e.preventDefault(); 
-    var formData = $(this).serialize(); 
+    e.preventDefault();
+    var formData = $(this).serialize();
     $.ajax({
       type: "POST",
-      url: "task_php/calc_expression.php", 
+      url: "task_php/calc_expression.php",
       data: formData,
       success: function (response) {
         $("#expression_result").html(response);
@@ -139,11 +139,11 @@ $(document).ready(function () {
 //task6
 $(document).ready(function () {
   $("#season_form").submit(function (e) {
-    e.preventDefault(); 
-    var formData = $(this).serialize(); 
+    e.preventDefault();
+    var formData = $(this).serialize();
     $.ajax({
       type: "POST",
-      url: "task_php/calc_season.php", 
+      url: "task_php/calc_season.php",
       data: formData,
       success: function (response) {
         $("#season_output").html(response);
@@ -154,11 +154,11 @@ $(document).ready(function () {
 //task7
 $(document).ready(function () {
   $("#max_number_form").submit(function (e) {
-    e.preventDefault(); 
-    var formData = $(this).serialize(); 
+    e.preventDefault();
+    var formData = $(this).serialize();
     $.ajax({
       type: "POST",
-      url: "task_php/calc_max_number.php", 
+      url: "task_php/calc_max_number.php",
       data: formData,
       success: function (response) {
         $("#max_number_output").html(response);
@@ -169,11 +169,11 @@ $(document).ready(function () {
 //task8
 $(document).ready(function () {
   $("#swap_digits_form").submit(function (e) {
-    e.preventDefault(); 
-    var formData = $(this).serialize(); 
+    e.preventDefault();
+    var formData = $(this).serialize();
     $.ajax({
       type: "POST",
-      url: "task_php/calc_swap_digits.php", 
+      url: "task_php/calc_swap_digits.php",
       data: formData,
       success: function (response) {
         $("#swapped_number_output").html(response);
@@ -225,11 +225,11 @@ generateMatrixInputs();
 //task2-3
 $(document).ready(function () {
   $("#sum_matrix_form").submit(function (e) {
-    e.preventDefault(); 
-    var formData = $(this).serialize(); 
+    e.preventDefault();
+    var formData = $(this).serialize();
     $.ajax({
       type: "POST",
-      url: "task2_php/calc_sum_matrix.php", 
+      url: "task2_php/calc_sum_matrix.php",
       data: formData,
       success: function (response) {
         $("#sum_matrix_result").html(response);
@@ -240,11 +240,11 @@ $(document).ready(function () {
 //task2-4
 $(document).ready(function () {
   $("#sum_product_form").submit(function (e) {
-    e.preventDefault(); 
-    var formData = $(this).serialize(); 
+    e.preventDefault();
+    var formData = $(this).serialize();
     $.ajax({
       type: "POST",
-      url: "task2_php/calc_sum_product.php", 
+      url: "task2_php/calc_sum_product.php",
       data: formData,
       success: function (response) {
         $("#sum_product_result").html(response);
@@ -254,8 +254,12 @@ $(document).ready(function () {
 });
 
 //task2-5
-document.getElementById("transpose_rows").addEventListener("input", generateTransposeMatrixInputs);
-document.getElementById("transpose_cols").addEventListener("input", generateTransposeMatrixInputs);
+document
+  .getElementById("transpose_rows")
+  .addEventListener("input", generateTransposeMatrixInputs);
+document
+  .getElementById("transpose_cols")
+  .addEventListener("input", generateTransposeMatrixInputs);
 
 function generateTransposeMatrixInputs() {
   const rows = document.getElementById("transpose_rows").value;
@@ -277,7 +281,9 @@ function generateTransposeMatrixInputs() {
     matrixInputsContainer.appendChild(document.createElement("br"));
   }
 }
-document.getElementById("transpose_form").addEventListener("submit", function (event) {
+document
+  .getElementById("transpose_form")
+  .addEventListener("submit", function (event) {
     event.preventDefault();
     const form = event.target;
     const formData = new FormData(form);
@@ -299,7 +305,9 @@ function fetchTransposeMatrix(action, formData) {
 
 generateTransposeMatrixInputs();
 //task2-6
-document.getElementById("matrix_size").addEventListener("input", generateMultiplicationMatrixInputs);
+document
+  .getElementById("matrix_size")
+  .addEventListener("input", generateMultiplicationMatrixInputs);
 
 function generateMultiplicationMatrixInputs() {
   const size = document.getElementById("matrix_size").value;
@@ -328,7 +336,9 @@ function generateMultiplicationMatrixInputs() {
     matrix2InputsContainer.appendChild(document.createElement("br"));
   }
 }
-document.getElementById("multiplication_form").addEventListener("submit", function (event) {
+document
+  .getElementById("multiplication_form")
+  .addEventListener("submit", function (event) {
     event.preventDefault();
     const form = event.target;
     const formData = new FormData(form);
@@ -347,3 +357,5 @@ document.getElementById("multiplication_form").addEventListener("submit", functi
   });
 
 generateMultiplicationMatrixInputs();
+
+

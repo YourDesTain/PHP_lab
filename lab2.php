@@ -160,8 +160,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row gap-2 mt-5">
                 <div class="col" id="flex_lab">
                     <div style="position: relative;">
                         <img src="image/img2-3.jpg" class="img" alt="..." data-bs-toggle="modal" data-bs-target="#exampleModal3">
@@ -194,6 +192,8 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="row gap-2 mt-5">
                 <div class="col" id="flex_lab">
                     <div style="position: relative;">
                         <img src="image/img2-4.jpg" class="img" alt="..." data-bs-toggle="modal" data-bs-target="#exampleModal4">
@@ -226,8 +226,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row gap-2 mt-5">
                 <div class="col" id="flex_lab">
                     <div style="position: relative;">
                         <img src="image/img2-5.jpg" class="img" alt="..." data-bs-toggle="modal" data-bs-target="#exampleModal5">
