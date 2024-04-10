@@ -106,7 +106,7 @@
                                 <div class="modal-body">
                                     <div class="task" id="array_sorting">
                                         <div class="container">
-                                            <h3>Сортировка массива</h3>
+                                            <h3 id="modal-task">Сортировка массива</h3>
                                         </div>
                                         <?php
                                         $array = array();
@@ -114,14 +114,31 @@
                                             $array[] = rand(1, 100);
                                         }
 
-                                        sort($array);
+                                        function bubbleSort(&$arr)
+                                        {
+                                            $n = count($arr);
+                                            for ($i = 0; $i < $n - 1; $i++) {
+                                                for ($j = 0; $j < $n - $i - 1; $j++) {
+                                                    if ($arr[$j] > $arr[$j + 1]) {
+                                                        // Обмен значениями
+                                                        $temp = $arr[$j];
+                                                        $arr[$j] = $arr[$j + 1];
+                                                        $arr[$j + 1] = $temp;
+                                                    }
+                                                }
+                                            }
+                                        }
+
+                                        bubbleSort($array);
+
                                         echo "<p>Массив, отсортированный по возрастанию: " . implode(", ", $array) . "</p>";
 
-                                        rsort($array);
+                                        $array = array_reverse($array);
                                         echo "<p>Массив, отсортированный по убыванию: " . implode(", ", $array) . "</p>";
                                         ?>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -141,10 +158,10 @@
                                 <div class="modal-body">
                                     <div class="task" id="matrix_swap">
                                         <div class="container">
-                                            <h3>Замена строк в матрице</h3>
+                                            <h3 id="modal-task">Замена строк в матрице</h3>
                                             <form method="post" action="task2_php/calc_matrix.php">
-                                                <label for="rows">Строки:</label>
-                                                <input type="number" name="rows" id="rows" min="1" required>
+                                                <label for="rows" style="margin-right: 12px; margin-bottom: 10px;">Строки:</label>
+                                                <input type="number" name="rows" id="rows" min="1" required><br>
                                                 <label for="cols">Столбцы:</label>
                                                 <input type="number" name="cols" id="cols" min="1" required><br><br>
                                                 <h4>Введите элементы матрицы:</h4>
@@ -175,7 +192,7 @@
                                 <div class="modal-body">
                                     <div class="task" id="sum_matrix">
                                         <div class="container">
-                                            <h3>Нахождение суммы элементов массива</h3>
+                                            <h3 id="modal-task">Нахождение суммы элементов массива</h3>
                                             <form id="sum_matrix_form">
                                                 <div class="mb-3">
                                                     <label for="array_input" class="form-label">Введите массив из 10 чисел через запятую:</label>
@@ -209,7 +226,7 @@
                                 <div class="modal-body">
                                     <div class="task" id="sum_product">
                                         <div class="container">
-                                            <h3>Нахождение суммы элементов массива</h3>
+                                            <h3 id="modal-task">Нахождение суммы элементов массива</h3>
                                             <form id="sum_product_form">
                                                 <div class="mb-3">
                                                     <label for="array_input" class="form-label">Введите массив из 10 чисел через запятую:</label>
@@ -241,10 +258,10 @@
                                 <div class="modal-body">
                                     <div class="task" id="matrix_transpose">
                                         <div class="container">
-                                            <h3>Транспонирование матрицы</h3>
+                                            <h3 id="modal-task">Транспонирование матрицы</h3>
                                             <form id="transpose_form" method="post" action="task2_php/transpose_matrix.php">
-                                                <label for="rows">Строки:</label>
-                                                <input type="number" name="rows" id="transpose_rows" min="1" required>
+                                                <label for="rows" style="margin-right: 12px; margin-bottom: 10px;">Строки:</label>
+                                                <input type="number" name="rows" id="transpose_rows" min="1" required><br>
                                                 <label for="cols">Столбцы:</label>
                                                 <input type="number" name="cols" id="transpose_cols" min="1" required><br><br>
                                                 <h4>Введите элементы матрицы:</h4>
@@ -275,7 +292,7 @@
                                 <div class="modal-body">
                                     <div class="task" id="matrix_multiplication">
                                         <div class="container">
-                                            <h3>Умножение квадратных матриц</h3>
+                                            <h3 id="modal-task">Умножение квадратных матриц</h3>
                                             <form id="multiplication_form" method="post" action="task2_php/matrix_multiplication.php">
                                                 <label for="matrix_size">Размерность (n):</label>
                                                 <input type="number" name="matrix_size" id="matrix_size" min="1" required><br><br>

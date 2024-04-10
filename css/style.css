@@ -275,6 +275,11 @@ body{
     padding-bottom: 5px;
     font-size: 18px;
 }
+#reverse_string_result{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 18px;
+}
 /* modal */
 #flex_lab{
     width: 33.33333333%;
@@ -301,6 +306,9 @@ body{
 .modal-content {
     background-color: #09090a !important;
     color: white;
+}
+#modal-task{
+    margin-bottom: 15px;
 }
 
 

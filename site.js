@@ -336,9 +336,7 @@ function generateMultiplicationMatrixInputs() {
     matrix2InputsContainer.appendChild(document.createElement("br"));
   }
 }
-document
-  .getElementById("multiplication_form")
-  .addEventListener("submit", function (event) {
+document.getElementById("multiplication_form").addEventListener("submit", function (event) {
     event.preventDefault();
     const form = event.target;
     const formData = new FormData(form);
@@ -357,5 +355,8 @@ document
   });
 
 generateMultiplicationMatrixInputs();
+
+
+
 
 

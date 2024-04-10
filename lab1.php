@@ -107,7 +107,7 @@
                                 <div class="modal-body">
                                     <div class="task" id="cylinder">
                                         <div class="container">
-                                            <h3>Вычисление объема фигур</h3>
+                                            <h3 id="modal-task">Вычисление объема фигур</h3>
                                             <form id="volume_form" method="post">
                                                 <div class="mb-3">
                                                     <label for="shape" class="form-label">Выберите фигуру:</label>
@@ -150,7 +150,7 @@
                                 <div class="modal-body">
                                     <div class="task" id="quadratic">
                                         <div class="container">
-                                            <h3>Вычисление корней квадратного уравнения</h3>
+                                            <h3 id="modal-task">Вычисление корней квадратного уравнения</h3>
                                             <form id="quadratic_form" method="post">
                                                 <div class="mb-3">
                                                     <label for="a_coefficient" class="form-label">Коэффициент a:</label>
@@ -192,7 +192,7 @@
                                 <div class="modal-body">
                                     <div class="task" id="factorial">
                                         <div class="container">
-                                            <h3>Вычисление факториала числа</h3>
+                                            <h3 id="modal-task">Вычисление факториала числа</h3>
                                             <form id="factorial_form">
                                                 <div class="mb-3">
                                                     <label for="number" class="form-label">Введите число:</label>
@@ -258,7 +258,7 @@
                                 <div class="modal-body">
                                     <div class="task" id="expression_value">
                                         <div class="container">
-                                            <h3>Вычисление значения выражения</h3>
+                                            <h3 id="modal-task">Вычисление значения выражения</h3>
                                             <form id="expression_form" method="post">
                                                 <div class="mb-3">
                                                     <label for="x_value" class="form-label">Введите значение x:</label>
@@ -291,7 +291,7 @@
                                 <div class="modal-body">
                                     <div class="task" id="season">
                                         <div class="container">
-                                            <h3>Определение поры года</h3>
+                                            <h3 id="modal-task">Определение поры года</h3>
                                             <form id="season_form" method="post">
                                                 <div class="mb-3">
                                                     <label for="month_number" class="form-label">Введите номер месяца (1-12):</label>
@@ -322,7 +322,7 @@
                                 <div class="modal-body">
                                     <div class="task" id="max_number">
                                         <div class="container">
-                                            <h3>Нахождение наибольшего числа из трех</h3>
+                                            <h3 id="modal-task">Нахождение наибольшего числа из трех</h3>
                                             <form id="max_number_form" method="post">
                                                 <div class="mb-3">
                                                     <label for="number1" class="form-label">Введите первое число:</label>
@@ -361,7 +361,7 @@
                                 <div class="modal-body">
                                     <div class="task" id="swap_digits">
                                         <div class="container">
-                                            <h3>Перестановка первой и последней цифры трехзначного числа</h3>
+                                            <h3 id="modal-task">Перестановка первой и последней цифры трехзначного числа</h3>
                                             <form id="swap_digits_form" method="post">
                                                 <div class="mb-3">
                                                     <label for="number" class="form-label">Введите трехзначное число:</label>
