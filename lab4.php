@@ -17,40 +17,41 @@
         <div class="list">
             <div class="item">
                 <img src="image/img1.png">
-                <div class="content">
-                    <h2>Лабораторная №1</h2>
+                <div class="content" style="color: aqua; letter-spacing: 3px;">
+                    <h2>Лабораторная №4</h2>
                 </div>
             </div>
             <div class="item">
                 <img src="image/img2.jpg">
-                <div class="content">
-                    <h2>Лабораторная №2</h2>
+                <div class="content" style="color: aqua; letter-spacing: 3px;">
+                    <h2>Лабораторная №4</h2>
                 </div>
             </div>
             <div class="item">
                 <img src="image/img3.jpg">
-                <div class="content">
-                    <h2>Лабораторная №3</h2>
+                <div class="content" style="color: aqua; letter-spacing: 3px;">
+                    <h2>Лабораторная №4</h2>
                 </div>
             </div>
             <div class="item active">
                 <img src="image/img4.jpg">
-                <div class="content">
+                <div class="content" style="color: aqua; letter-spacing: 3px;">
                     <h2>Лабораторная №4</h2>
                 </div>
             </div>
             <div class="item">
                 <img src="image/img5.jpg">
-                <div class="content">
-                    <h2>Лабораторная №</h2>
+                <div class="content" style="color: aqua; letter-spacing: 3px;">
+                    <h2>Лабораторная №4</h2>
                 </div>
             </div>
         </div>
 
         <!-- button arrows -->
         <div class="arrows">
-            <button id="prev"><</button>
-            <button id="next">></button>
+            <button id="prev">
+                << /button>
+                    <button id="next">></button>
         </div>
 
         <!-- thumbnail -->
@@ -88,6 +89,7 @@
         </div>
     </div>
 
+    <div class="footer"></div>
     
 
     <script src="site.js"></script>

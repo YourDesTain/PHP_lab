@@ -280,6 +280,22 @@ body{
     padding-bottom: 5px;
     font-size: 18px;
 }
+#encrypt_original{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 18px;
+}
+#encrypt_result{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 18px;
+}
+#decrypt_result{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 18px;
+}
+
 /* modal */
 #flex_lab{
     width: 33.33333333%;

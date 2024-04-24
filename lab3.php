@@ -48,9 +48,8 @@
 
         <!-- button arrows -->
         <div class="arrows">
-            <button id="prev">
-                << /button>
-                    <button id="next">></button>
+            <button id="prev"><</button>
+            <button id="next">></button>
         </div>
 
         <!-- thumbnail -->
@@ -109,7 +108,7 @@
                                         <div class="container">
                                             <h3 id="modal-task">Подсчет количества символов</h3>
                                             <form id="symbol_count_form" method="post">
-                                                <textarea name="text" id="text" cols="50" rows="6"></textarea>
+                                                <textarea name="text" id="text" cols="50" rows="5"></textarea>
                                                 <br>
                                                 <input type="submit" class="btn btn-primary" value="Подсчитать">
                                                 <div id="symbol_count_result"></div>
@@ -141,7 +140,7 @@
                         <div class="caption" data-bs-toggle="modal" data-bs-target="#exampleModal2">Подсчет количества введенных слов и символов</div>
                     </div>
                     <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModal2Label" aria-hidden="true">
-                        <div class="modal-dialog" id="modal-matrix">
+                        <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModal2Label">Второе Задание</h5>
@@ -152,7 +151,7 @@
                                         <div class="container">
                                             <h3 id="modal-task">Подсчет количества слов и символов</h3>
                                             <form method="post">
-                                                <textarea name="text" rows="4" cols="50"></textarea><br>
+                                                <textarea name="text" rows="5" cols="45"></textarea><br>
                                                 <input type="submit" class="btn btn-primary" value="Подсчитать">
                                             </form>
                                             <?php
@@ -240,61 +239,86 @@
                                     <div class="task" id="encrypt_text">
                                         <div class="container">
                                             <h3 id="modal-task">Шифрование сообщения</h3>
-                                            <form method="post" id="encrypt_text_form">
+                                            <form id="encrypt_text_form" method="post" accept-charset="UTF-8">
+                                                <input type="text" name="message" placeholder="Введите текст для шифрования" style="margin-bottom: 10px; width: 35vh;"><br>
+                                                <label for="shift" style="padding-bottom: 10px">Введите сдвиг (число от 1 до 32):</label>
+                                                <input type="number" name="shift" id="shift" min="1" max="32" style="width: 76px">
+                                                <input type="submit" class="btn btn-primary" value="Зашифровать">
                                             </form>
                                             <?php
-
-                                            // Функция для шифрования текста методом Цезаря
-                                            function caesarCipher($text, $shift)
+                                            function encryptMessage($message, $shift)
                                             {
-                                                $result = '';
+                                                $alphabet = "абвгдежзийклмнопрстуфхцчшщъыьэюя";
 
-                                                // Проходимся по каждому символу в тексте
-                                                $textLength = mb_strlen($text, 'UTF-8');
-                                                for ($i = 0; $i < $textLength; $i++) {
-                                                    $char = mb_substr($text, $i, 1, 'UTF-8');
+                                                $alphabetLength = mb_strlen($alphabet);
 
-                                                    // Проверяем, является ли символ буквой
-                                                    if (preg_match('/[a-zA-Z]/', $char)) {
-                                                        // Определяем регистр символа
-                                                        $isUpperCase = ctype_upper($char);
+                                                $message = mb_strtolower($message);
+                                                $message = preg_replace('/\s+/u', '', $message);
 
-                                                        // Преобразуем символ к нижнему регистру для работы с ним
-                                                        $char = mb_strtolower($char, 'UTF-8');
+                                                $encryptedMessage = "";
 
-                                                        // Преобразуем символ с учетом сдвига
-                                                        $charCode = ord($char) - ord('a');
-                                                        $shiftedCharCode = ($charCode + $shift) % 26;
-                                                        $shiftedChar = chr($shiftedCharCode + ord('a'));
+                                                for ($i = 0; $i < mb_strlen($message); $i++) {
+                                                    $char = mb_substr($message, $i, 1);
+                                                    $position = mb_strpos($alphabet, $char);
 
-                                                        // Возвращаем символ в исходный регистр
-                                                        if ($isUpperCase) {
-                                                            $shiftedChar = mb_strtoupper($shiftedChar, 'UTF-8');
+                                                    if ($position !== false) {
+                                                        $newPosition = ($position + $shift) % $alphabetLength;
+                                                        if ($newPosition < 0) {
+                                                            $newPosition += $alphabetLength;
                                                         }
-
-                                                        // Добавляем символ к результату
-                                                        $result .= $shiftedChar;
+                                                        $newChar = mb_substr($alphabet, $newPosition, 1);
+                                                        $encryptedMessage .= $newChar;
                                                     } else {
-                                                        // Если символ не буква, оставляем его без изменений
-                                                        $result .= $char;
+                                                        $encryptedMessage .= $char;
                                                     }
                                                 }
 
-                                                return $result;
+                                                return $encryptedMessage;
                                             }
 
-                                            // Получаем введенное сообщение и сдвиг
-                                            $message = isset($_POST['message']) ? $_POST['message'] : '';
-                                            $shift = isset($_POST['shift']) ? intval($_POST['shift']) : 0;
+                                            function decryptMessage($encryptedMessage, $shift)
+                                            {
+                                                $alphabet = "абвгдежзийклмнопрстуфхцчшщъыьэюя";
 
-                                            // Шифруем сообщение
-                                            $encryptedMessage = caesarCipher($message, $shift);
+                                                $alphabetLength = mb_strlen($alphabet);
 
-                                            // Выводим зашифрованное сообщение
-                                            echo $encryptedMessage;
+                                                $decryptedMessage = "";
 
+                                                for ($i = 0; $i < mb_strlen($encryptedMessage); $i++) {
+                                                    $char = mb_substr($encryptedMessage, $i, 1);
+                                                    $position = mb_strpos($alphabet, $char);
+
+                                                    if ($position !== false) {
+                                                        $newPosition = ($position - $shift) % $alphabetLength;
+                                                        if ($newPosition < 0) {
+                                                            $newPosition += $alphabetLength;
+                                                        }
+                                                        $newChar = mb_substr($alphabet, $newPosition, 1);
+                                                        $decryptedMessage .= $newChar;
+                                                    } else {
+                                                        $decryptedMessage .= $char;
+                                                    }
+                                                }
+
+                                                return $decryptedMessage;
+                                            }
+
+                                            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+                                                $message = $_POST["message"];
+                                                $shift = (int)$_POST["shift"];
+
+                                                $encryptedMessage = encryptMessage($message, $shift);
+
+                                                $decryptedMessage = decryptMessage($encryptedMessage, $shift);
+                                            }
+
+                                            if (isset($encryptedMessage)) {
+                                                echo "<div id='encrypt_original'>Исходное сообщение: $message</div>";
+                                                echo "<div id='encrypt_result'>Зашифрованное сообщение: $encryptedMessage</div>";
+                                                echo "<div id='decrypt_result'>Дешифрованное сообщение: $decryptedMessage</div>";
+                                            }
                                             ?>
-
                                         </div>
                                     </div>
                                 </div>
@@ -304,14 +328,14 @@
                 </div>
                 <div class="col" id="flex_lab">
                     <div style="position: relative;">
-                        <img src="image/img2-4.jpg" class="img" alt="..." data-bs-toggle="modal" data-bs-target="#exampleModal4">
-                        <div class="caption" data-bs-toggle="modal" data-bs-target="#exampleModal4">Нахождение произведения суммы элементов массива</div>
+                        <img src="image/img2-6.jpg" class="img" alt="..." data-bs-toggle="modal" data-bs-target="#exampleModal5">
+                        <div class="caption" data-bs-toggle="modal" data-bs-target="#exampleModal5">Нахождение произведения суммы элементов массива</div>
                     </div>
-                    <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModal4Label" aria-hidden="true">
+                    <div class="modal fade" id="exampleModal5" tabindex="-1" aria-labelledby="exampleModal5Label" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModal4Label">Четвертое Задание</h5>
+                                    <h5 class="modal-title" id="exampleModal5Label">Пятое Задание</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
@@ -320,6 +344,34 @@
                                             <h3 id="modal-task">Нахождение суммы элементов массива</h3>
                                             <form id="">
                                             </form>
+                                            
+                                            <?php
+                                            $json_file = 'employees.json';
+
+                                            if (file_exists($json_file)) {
+                                                $json_data = file_get_contents($json_file);
+
+                                                $employees = json_decode($json_data, true);
+
+                                                if ($employees !== null) {
+
+                                                    foreach ($employees as $employee) {
+                                                        $fio = $employee['fio'];
+                                                        $position = $employee['position'];
+                                                        $department = $employee['department'];
+                                                        $phone = $employee['phone'];
+                                                        $address = $employee['address'];
+                                                        $employee_id = $employee['employee_id'];
+
+                                                        echo "ФИО: $fio<br> Должность: $position<br> Подразделение: $department<br> Телефон: $phone<br> Адрес: $address<br> Табельный номер: $employee_id<br><br>";
+                                                    }
+                                                } else {
+                                                    echo "Ошибка при преобразовании JSON.";
+                                                }
+                                            } else {
+                                                echo "Файла $json_file не существует";
+                                            }
+                                            ?>
                                         </div>
                                     </div>
                                 </div>
