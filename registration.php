@@ -48,49 +48,67 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
-    <script>
-        function redirect() {
-            window.location.replace("login.php");
-        }
-    </script>
     <title>Registration</title>
 </head>
 
 <body>
-    <div class="container">
-        <form method="post">
-            <div class="form-group">
-                <input type="login" class="form-control" name="login" placeholder="Логин:">
-            </div>
-            <div class="form-group">
-                <input type="fio" class="form-control" name="fio" placeholder="ФИО:">
-            </div>
-            <div class="form-group">
-                <input type="address" class="form-control" name="address" placeholder="Адрес:">
-            </div>
-            <div class="form-group">
-                <input type="telephone" class="form-control" name="telephone" placeholder="Моб. Телефон:">
-            </div>
-            <div class="form-group">
-                <label for="role">Роль:</label>
-                <select class="form-control" name="role">
-                    <option value="клиент">Клиент</option>
-                    <option value="исполнитель">Исполнитель</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <input type="password" class="form-control" name="password" placeholder="Пароль:">
-            </div>
-            <div class="form-btn">
-                <input type="submit" class="btn btn-primary" value="Зарегистрироваться" name="submit">
-            </div>
-        </form>
-        <div>
-            <div>
-                <p>Уже зарегистрированы? <a href="login.php">Войдите здесь</a></p>
+    <section class="vh-100" style="background-image: url('image/login2.jpg'); background-size: cover; background-repeat: no-repeat;" method="post">
+        <div class="container py-3">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card bg-custom text-white" style="border-radius: 1rem;">
+                        <div class="card-body p-5 text-center">
+
+                            <div class="mb-md-5 mt-md-4 pb-5">
+							<form method="post">
+                                <h2 class="fw-bold mb-2 text-uppercase">Регистрация</h2>
+                                <p class="text-white-50 mb-5">Пожалуйста введите ваши данные!</p>
+
+                                <div data-mdb-input-init class="form-outline form-white mb-4">
+                                    <input type="login" id="typeLogin" name="login" class="form-control form-control-lg" placeholder="Логин" />
+                                </div>
+
+                                <div data-mdb-input-init class="form-outline form-white mb-4">
+                                    <input type="fio" id="typeFio" name="fio" class="form-control form-control-lg" placeholder="ФИО" />
+                                </div>
+
+                                <div data-mdb-input-init class="form-outline form-white mb-4">
+                                    <input type="address" id="typeAddress" name="address" class="form-control form-control-lg" placeholder="Адрес" />
+                                </div>
+
+                                <div data-mdb-input-init class="form-outline form-white mb-4">
+                                    <input type="telephone" id="typeTelephone" name="telephone" class="form-control form-control-lg" placeholder="Моб. телефон" />
+                                </div>
+
+                                <div class="form-group mb-4">
+                                    <label for="role" class="text-white-30 mb-2" style="font-size: 20px;">Роль:</label>
+                                    <select class="form-select form-control-lg form-white" id="role" name="role">
+                                        <option value="клиент">Клиент</option>
+                                        <option value="исполнитель">Исполнитель</option>
+                                    </select>
+                                </div>
+
+                                <div data-mdb-input-init class="form-outline form-white mb-4">
+                                    <input type="password" id="typePassword" name="password" class="form-control form-control-lg" placeholder="Пароль" />
+                                </div>
+
+                                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5" type="submit" value="Login" name="submit">Зарегистрироваться</button>
+								</form>
+                            </div>
+
+                            <div>
+                                <p class="mb-0">Есть аккаунт? <a href="login.php" class="text-white-150 fw-bold"> Войти</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 
 </html>

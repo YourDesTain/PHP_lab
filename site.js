@@ -250,4 +250,3 @@ document.getElementById("multiplication_form").addEventListener("submit", functi
   });
 
 generateMultiplicationMatrixInputs();
-

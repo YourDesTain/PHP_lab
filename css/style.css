@@ -1,10 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-body {
-  font-family: Poppins;
-  margin: 0;
-  background-color: #010101;
-  color: #eee;
-}
 /* slider */
 .slider {
   height: 100vh;
@@ -350,52 +344,96 @@ body {
   margin-bottom: 15px;
 }
 /* modal-profile */
-#modal-profile{
-    position: absolute;
-    top: 50px;
-    right: 30px;
-    width: 200px;
-    height: auto;
-    border-radius: 5px;
-    background-color: white;
+#modal-profile {
+  position: absolute;
+  top: 50px;
+  right: 30px;
+  width: 200px;
+  height: auto;
+  border-radius: 5px;
+  background-color: white;
 }
-#content-profile{
-    background-color: white !important;
+#content-profile {
+  background-color: white !important;
 }
-.modal-title-profile{
-    color: #000;
-    margin-left: 20px;
-    font-size: 18px;
+.modal-title-profile {
+  color: #000;
+  margin-left: 20px;
+  font-size: 18px;
 }
-.btn-settings{
-    background-color: white;
-    border: none;
+.btn-settings {
+  background-color: white;
+  border: none;
 }
 .btn-settings:hover {
-    background-color: #eee;
-    height: auto;
-    border-radius: 3px;
-  }
-.btn-logout{
-    background-color: white;
-    border: none;
-    color:  red;
+  background-color: #eee;
+  height: auto;
+  border-radius: 3px;
+}
+.btn-logout {
+  background-color: white;
+  border: none;
+  color: red;
 }
 .btn-logout:hover {
-    background-color: #eee;
-    height: auto;
-    border-radius: 3px;
-  }
-.modal-header-profile {
-    display: flex;
-    flex-shrink: 0;
-    align-items: center;
-    justify-content: left;
-    padding: 6px 12px;
+  background-color: #eee;
+  height: auto;
+  border-radius: 3px;
 }
-.modal-body-profile{
-    border-top: 1px solid rgb(217, 217, 217);
-    position: relative;
-    flex: 1 1 auto;
-    padding: 10px;
+.modal-header-profile {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: left;
+  padding: 6px 12px;
+}
+.modal-body-profile {
+  border-top: 1px solid rgb(217, 217, 217);
+  position: relative;
+  flex: 1 1 auto;
+  padding: 10px;
+}
+/* Login */
+.bg-custom {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.form-outline input:focus::placeholder {
+  transform: translateY(-65%);
+  transition: transform 0.3s ease;
+  opacity: 0.6;
+  font-size: 16px;
+}
+
+/* Style for modal */
+#profile-wrapper {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 756px;
+  position: absolute;
+  z-index: 1000;
+  max-width: 100vw;
+  transition: all 0.3s;
+}
+.header-profile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 16px;
+}
+.header-close {
+  border: none;
+  background-color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  padding-inline-start: 0;
+  padding-inline-end: 0;
+}
+@media (min-width: 576px) {
+  #profile-wrapper.modal-dialog {
+      margin: 0 !important;
+  }
 }
