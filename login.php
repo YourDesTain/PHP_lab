@@ -22,7 +22,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Пароль верный, устанавливаем сессию для пользователя
             $_SESSION['login'] = $user['login'];
             $_SESSION['role'] = $user['role'];
-            // Перенаправляем пользователя на защищенную страницу
+            $_SESSION['fio'] = $user['fio']; 
+            $_SESSION['address'] = $user['address'];
+            $_SESSION['telephone'] = $user['telephone'];
+            $_SESSION['pass'] = $user['pass'];
+
             header("Location: index.php");
             exit();
         } else {

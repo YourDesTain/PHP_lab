@@ -2,6 +2,11 @@ let items = document.querySelectorAll(".slider .list .item");
 let next = document.getElementById("next");
 let prev = document.getElementById("prev");
 let thumbnails = document.querySelectorAll(".thumbnail .item");
+let originalText = {
+  text: "",
+  telephone: "",
+  address: "",
+};
 
 // config param
 let countItem = items.length;
@@ -231,7 +236,9 @@ function generateMultiplicationMatrixInputs() {
     matrix2InputsContainer.appendChild(document.createElement("br"));
   }
 }
-document.getElementById("multiplication_form").addEventListener("submit", function (event) {
+document
+  .getElementById("multiplication_form")
+  .addEventListener("submit", function (event) {
     event.preventDefault();
     const form = event.target;
     const formData = new FormData(form);
@@ -250,3 +257,82 @@ document.getElementById("multiplication_form").addEventListener("submit", functi
   });
 
 generateMultiplicationMatrixInputs();
+
+//ФУнкции для кнопки edit профиля
+function makeEditable(field) {
+  var span = document.getElementById(`editable-${field}`);
+  originalText[field] = span.innerText;
+  var text = span.innerText;
+  var input = document.createElement("input");
+  input.type = "text";
+  input.value = text;
+  input.className = "edit-profile";
+  input.id = `editable-input-${field}`;
+
+  input.addEventListener("blur", function () {});
+
+  input.addEventListener("keypress", function (event) {
+      if (event.key === "Enter") {
+          saveChanges(field);
+      }
+  });
+
+  span.replaceWith(input);
+  input.focus();
+
+  document.getElementById(`edit-button-${field}`).style.display = "none";
+  document.getElementById(`save-button-${field}`).style.display = "inline";
+  document.getElementById(`cancel-button-${field}`).style.display = "inline";
+}
+
+function saveChanges(field) {
+  var form = document.getElementById('profile-form');
+  var formData = new FormData(form); // Move this line up
+
+  var input = document.getElementById(`editable-input-${field}`);
+  var span = document.createElement("span");
+  span.id = `editable-${field}`;
+  span.className = "add-text";
+  span.innerText = input.value;
+
+  input.replaceWith(span);
+
+  formData.append('field', field);
+  formData.append('value', input.value); // Now formData is defined before this line
+
+  fetch('update_profile.php', {
+      method: 'POST',
+      body: formData
+  })
+  .then(response => {
+    console.log([...formData.entries()]);
+    return response.json();
+  })
+    .then(data => {
+        if (data.success) {
+            alert('Изменения успешно сохранены!');
+        } else {
+            alert('Ошибка при сохранении изменений.');
+        }
+    })
+    .catch(error => console.error('Error:', error));
+
+  document.getElementById(`edit-button-${field}`).style.display = "inline";
+  document.getElementById(`save-button-${field}`).style.display = "none";
+  document.getElementById(`cancel-button-${field}`).style.display = "none";
+}
+
+
+function cancelChanges(field) {
+  var input = document.getElementById(`editable-input-${field}`);
+  var span = document.createElement("span");
+  span.id = `editable-${field}`;
+  span.className = "add-text";
+  span.innerText = originalText[field];
+
+  input.replaceWith(span);
+
+  document.getElementById(`edit-button-${field}`).style.display = "inline";
+  document.getElementById(`save-button-${field}`).style.display = "none";
+  document.getElementById(`cancel-button-${field}`).style.display = "none";
+}
